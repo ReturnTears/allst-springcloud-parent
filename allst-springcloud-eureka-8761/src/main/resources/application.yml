@@ -1,0 +1,16 @@
+# eureka server服务端口
+server:
+  port: 8761
+spring:
+  application:
+    name: allst-cloud-eureka-server # 应用名称，用在Eureka中作为服务名称
+# eureka 客户端配置（和Server交互），Eureka Server 其实也是一个Client
+eureka:
+  instance:
+    hostname: AllstCloudEurekaServerA
+    # hostname: localhost # 当前eureka实例的主机名 单机模式下可用
+  client:
+    service-url: # 配置客户端所交互的Eureka Server的地址（Eureka Server集群中每一个Server其实相对于其它Server来说都是Client）
+      defaultZone: http://AllstCloudEurekaServerB:8762/eureka
+    register-with-eureka: true # 当前自己就是server， 不需要注册自己, 集群模式下为true
+    fetch-registry: true # 查询获取注册中心的服务信息， 自己就是Server， 不需要从Eureka server获取服务信息，

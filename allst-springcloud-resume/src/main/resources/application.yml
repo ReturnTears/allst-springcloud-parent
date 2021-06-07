@@ -1,0 +1,41 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: sc-service-resume
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/cloud?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=UTC
+    username: root
+    password: 123456
+  jpa:
+    database: mysql
+    show-sql: true
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+  cloud:
+    # config客户端配置,和ConfigServer通信，并告知ConfigServer希望获取的配置信息在哪个文件中
+    config:
+      name: sc-service-resume  #配置文件名称
+      profile: dev  #后缀名称
+      label: master #分支名称
+      uri: http://localhost:9006    #ConfigServer配置中心地址
+    rabbitmq:
+      host: 127.0.0.1
+      port: 5672
+      username: guest
+      password: guest
+# 注册到Eureka服务中心
+eureka:
+  client:
+    service-url:
+      # 注册到集群，即将多个EurekaServer服务地址使用都好分割连接起来
+      defaultZone: http://AllstCloudEurekaServerA:8761/eureka,http://AllstCloudEurekaServerB:8762/eureka
+  instance:
+    prefer-ip-address: true # 服务实例中显示IP而不是显示主机名
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}:@project.version@
+    # 自定义元数据
+    metadata-map:
+      cluster: cl1
+      region: rn1

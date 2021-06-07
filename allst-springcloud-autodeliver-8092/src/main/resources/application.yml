@@ -1,0 +1,47 @@
+server:
+  port: 8092
+spring:
+  application:
+    name: sc-service-autodeliver
+# 注册到Eureka服务中心
+eureka:
+  client:
+    service-url:
+      # 注册到集群，即将多个EurekaServer服务地址使用都好分割连接起来
+      defaultZone: http://AllstCloudEurekaServerA:8761/eureka,http://AllstCloudEurekaServerB:8762/eureka
+  instance:
+    prefer-ip-address: true # 服务实例中显示IP而不是显示主机名
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}:@project.version@
+# 针对被调用方微服务名称， 不加就是全局生效
+sc-service-resume:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule
+    #请求连接超时时间
+    ConnectTimeout: 2000
+    #请求处理超时时间
+    ##########################################Feign超时时长设置
+    ReadTimeout: 3000
+    #对所有操作都进行重试
+    OkToRetryOnAllOperations: true
+    ####根据如上配置，当访问到故障请求的时候，它会再尝试访问一次当前实例（次数由MaxAutoRetries配置），
+    ####如果不行，就换一个实例进行访问，如果还不行，再换一次实例访问（更换次数由MaxAutoRetriesNextServer配置），
+    ####如果依然不行，返回失败信息。
+    MaxAutoRetries: 0 #对当前选中实例重试次数，不包括第一次调用
+    MaxAutoRetriesNextServer: 0 #切换实例的重试次数
+# SpringBoot中暴露健康检查等断点接口
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+logging:
+  level:
+    # Feign日志只会对日志级别为debug的做出响应
+    com.allst.springcloud.service.ResumeServiceFeignClient: debug
+# 开启服务降级
+feign:
+  hystrix:
+    enabled: true

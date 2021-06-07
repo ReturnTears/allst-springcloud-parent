@@ -1,0 +1,27 @@
+server:
+  port: 8091
+spring:
+  application:
+    name: sc-service-autodeliver
+# 注册到Eureka服务中心
+eureka:
+  client:
+    service-url:
+      # 注册到集群，即将多个EurekaServer服务地址使用都好分割连接起来
+      defaultZone: http://AllstCloudEurekaServerA:8761/eureka,http://AllstCloudEurekaServerB:8762/eureka
+  instance:
+    prefer-ip-address: true # 服务实例中显示IP而不是显示主机名
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}:@project.version@
+# 针对被调用方微服务名称， 不加就是全局生效
+sc-service-resume:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule
+# SpringBoot中暴露健康检查等断点接口
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>allst-springcloud-parent</artifactId>
+        <groupId>com.allst.springcloud</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>allst-springcloud-hystrix-turbine</artifactId>
+
+    <name>allst-springcloud-hystrix-turbine</name>
+    <url>http://www.example.com</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+    </properties>
+
+    <dependencies>
+        <!--hystrix turbine聚合监控-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-turbine</artifactId>
+        </dependency>
+
+        <!--
+            引入eureka客户端的两个原因
+            1、老师说过，微服务架构下的服务都尽量注册到服务中心去，便于统一管理
+            2、后续在当前turbine项目中我们需要配置turbine聚合的服务，比如，我们希望聚合
+               sc-service-autodeliver这个服务的各个实例的hystrix数据流，那随后
+               我们就需要在application.yml文件中配置这个服务名，那么turbine获取服务下具体实例的数据流的
+               时候需要ip和端口等实例信息，那么怎么根据服务名称获取到这些信息呢？
+                  当然可以从eureka服务注册中心获取
+        -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+    </dependencies>
+</project>

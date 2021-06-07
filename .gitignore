@@ -1,0 +1,16 @@
+# Project exclude paths
+/allst-springcloud-autodeliver/target/
+/allst-springcloud-autodeliver-8092/target/
+/allst-springcloud-common/target/
+/allst-springcloud-config-server/target/
+/allst-springcloud-eureka-8761/target/
+/allst-springcloud-eureka-8762/target/
+/allst-springcloud-gateway/target/
+/allst-springcloud-hystrix-dashboard/target/
+/allst-springcloud-hystrix-turbine/target/
+/allst-springcloud-oauth-server/target/
+/allst-springcloud-resume/target/
+/allst-springcloud-resume-8082/target/
+/allst-springcloud-stream-consumer-9091/target/
+/allst-springcloud-stream-consumer-9092/target/
+/allst-springcloud-stream-producer/target/

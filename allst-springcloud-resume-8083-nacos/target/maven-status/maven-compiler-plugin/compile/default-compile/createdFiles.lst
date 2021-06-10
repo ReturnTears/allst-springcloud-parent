@@ -1,0 +1,5 @@
+com\allst\springcloud\dao\ResumeDao.class
+com\allst\springcloud\ResumeApplication8083.class
+com\allst\springcloud\service\impl\ResumeServiceImpl.class
+com\allst\springcloud\controller\ResumeController.class
+com\allst\springcloud\service\ResumeService.class

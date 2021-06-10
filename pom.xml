@@ -24,6 +24,7 @@
     <module>allst-springcloud-stream-consumer-9091</module>
     <module>allst-springcloud-stream-consumer-9092</module>
     <module>allst-springcloud-oauth-server</module>
+    <module>allst-springcloud-resume-8083-nacos</module>
   </modules>
 
   <name>allst-springcloud-parent</name>
@@ -49,6 +50,14 @@
         <groupId>org.springframework.cloud</groupId>
         <artifactId>spring-cloud-dependencies</artifactId>
         <version>Greenwich.RELEASE</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <!-- 引入SCA -->
+      <dependency>
+        <groupId>com.alibaba.cloud</groupId>
+        <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+        <version>2.1.0.RELEASE</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>

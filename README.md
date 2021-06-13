@@ -51,6 +51,21 @@ Namespace：命名空间，对不同的环境进行隔离, 不同的命名空间
 Group：分组
 Service：某一个服务
 DataId：某个项目的具体配置集文件
+
+Nacos Server数据持久化到MySQL
+nacos-db.sql文件在src\main\resources\nacos-db.sql
+修改Nacos安装包中conf目录下application.properties文件中:
+        **************Config Module Related Configurations****************
+    ### If use MySQL as datasource:
+    spring.datasource.platform=mysql
+    ### Count of DB:
+    db.num=1
+    ### Connect URL of DB:
+    db.url.0=jdbc:mysql://127.0.0.1:3306/cloud?characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true&useUnicode=true&useSSL=false&serverTimezone=UTC
+    db.user=root
+    db.password=123456
+然后重启Nacos即可
+
 ```
 
 # Error

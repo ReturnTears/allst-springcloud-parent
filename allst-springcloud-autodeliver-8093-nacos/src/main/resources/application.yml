@@ -8,6 +8,7 @@ spring:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
+        cluster-name: BJ
 # 针对被调用方微服务名称， 不加就是全局生效
 sc-service-resume:
   ribbon:

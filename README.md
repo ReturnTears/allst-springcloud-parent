@@ -45,6 +45,12 @@ Hystrix舱壁模式
 GateWay网关
 
 
+Nacos数据模型(领域模型)
+Namespace 包含  Group  包含 Service/DataId
+Namespace：命名空间，对不同的环境进行隔离, 不同的命名空间是隔离的， 其中的服务不能相互调用
+Group：分组
+Service：某一个服务
+DataId：某个项目的具体配置集文件
 ```
 
 # Error

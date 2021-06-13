@@ -1,0 +1,28 @@
+server:
+  port: 8084
+spring:
+  application:
+    name: sc-service-resume
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/cloud?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=UTC
+    username: root
+    password: 123456
+  jpa:
+    database: mysql
+    show-sql: true
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+  # nacos配置
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.01:8848
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+

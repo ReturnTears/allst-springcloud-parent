@@ -11,7 +11,7 @@
 
     <artifactId>allst-springcloud-resume-8083-nacos</artifactId>
 
-    <name>allst-springcloud-resume</name>
+    <name>allst-springcloud-resume-8083-nacos</name>
     <url>http://www.example.com</url>
 
     <properties>

@@ -9,9 +9,9 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>allst-springcloud-resume-8082</artifactId>
+    <artifactId>allst-springcloud-autodeliver-8093-nacos</artifactId>
 
-    <name>allst-springcloud-resume-8082</name>
+    <name>allst-springcloud-autodeliver-8093-nacos</name>
     <url>http://www.example.com</url>
 
     <properties>
@@ -22,18 +22,13 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.allst.springcloud</groupId>
-            <artifactId>allst-springcloud-common</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <!--   eureka client     -->
-        <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-bus-amqp</artifactId>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
     </dependencies>
+
 </project>

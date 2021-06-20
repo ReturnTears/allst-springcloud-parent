@@ -23,7 +23,7 @@ spring:
         # server-addr: 127.0.01:8848,127.0.01:8849,127.0.01:8850
         cluster-name: BJ
         # namespace: # 这里的namespace是nacos服务上新建命名空间的id
-      config:
+      config: # 优先级最高， 扩展配置的优先级是谁的索引值大谁高
         server-addr: 127.0.01:8848
         # server-addr: 127.0.01:8848,127.0.01:8849,127.0.01:8850
         # 命名空间的id
@@ -31,6 +31,15 @@ spring:
         # 默认分组就是DEFAULT_GROUP，如果使用默认分组可以不指定
         group: DEFAULT_GROUP
         file-extension: yaml
+        # 加载多个配置信息时使用
+        ext-config[0]:
+          data-id: ext1.yaml
+          group: DEFAULT_GROUP
+          refresh: true # 开始扩展的data-id动态加载刷新
+        ext-config[1]:
+          data-id: ext1.yaml
+          group: DEFAULT_GROUP
+          refresh: true # 开始扩展的data-id动态加载刷新
 management:
   endpoints:
     web:

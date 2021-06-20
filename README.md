@@ -66,6 +66,17 @@ nacos-db.sql文件在src\main\resources\nacos-db.sql
     db.password=123456
 然后重启Nacos即可
 
+
+Nacos配置中心
+SpringCloud+Bus >>
+1、在GitHub上添加配置文件
+2、创建Config Server配置中心->从Github上去下载配置信息
+3、具体的微服务中配置Config Client -> ConfigServer获取配置信息
+
+Nacos >>
+Nacos分布式配置要简单很多
+1、Nacos Server中添加配置信息
+2、改造具体的微服务，使其成为Nacos Config Client
 ```
 
 # Error

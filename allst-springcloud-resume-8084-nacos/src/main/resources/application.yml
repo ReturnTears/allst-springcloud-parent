@@ -19,12 +19,27 @@ spring:
     nacos:
       discovery:
         server-addr: 127.0.01:8848
+        # 将微服务注册到集群,使用三台nacos服务，并将其配置为集群模式，已集群模式启动每一台服务：startup.bat -m cluster
+        # server-addr: 127.0.01:8848,127.0.01:8849,127.0.01:8850
         cluster-name: BJ
         # namespace: # 这里的namespace是nacos服务上新建命名空间的id
+      config:
+        server-addr: 127.0.01:8848
+        # server-addr: 127.0.01:8848,127.0.01:8849,127.0.01:8850
+        # 命名空间的id
+        # namespace: public
+        # 默认分组就是DEFAULT_GROUP，如果使用默认分组可以不指定
+        group: DEFAULT_GROUP
+        file-extension: yaml
 management:
   endpoints:
     web:
       exposure:
         include: "*"
 
+# 在Nacos Config中配置如下自定义配置内容
+lg:
+  message: Lagou
+my:
+  url: https://github.com/returntears
 
